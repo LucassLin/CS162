@@ -1,0 +1,7 @@
+{ val pred = (i: Int) => 5 < i
+  filter(Nil(unit))(pred)
+}
+;;;
+Nil(unit)
+;;;
+IntList

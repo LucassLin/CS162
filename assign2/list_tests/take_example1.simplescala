@@ -1,0 +1,5 @@
+{ val e = Cons((2, Cons((3, Nil(unit)))))
+  take(e)(1)
+}
+;;;
+Cons((2, Nil(unit)))

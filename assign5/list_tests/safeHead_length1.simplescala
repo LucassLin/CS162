@@ -1,0 +1,5 @@
+safeHead[String](Cons[String](("moo", Nil[String](unit))))
+;;;
+Some("moo")
+;;;
+Option[String]

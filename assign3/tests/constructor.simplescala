@@ -1,0 +1,6 @@
+algebraic Option = Some(Int) | None(Unit)
+Some(1)
+;;;
+Some(1)
+;;;
+Option

@@ -1,0 +1,5 @@
+{ val list = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  map(list)(s => s + "bar")
+}
+;;;
+Cons(("moobar", Cons(("cowbar", Cons(("bullbar", Nil(unit)))))))

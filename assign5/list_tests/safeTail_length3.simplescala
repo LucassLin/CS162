@@ -1,0 +1,7 @@
+{ val l1 = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))))
+  safeTail[Int](l1)
+}
+;;;
+Some(Cons((2, Cons((3, Nil(unit))))))
+;;;
+Option[List[Int]]

@@ -1,0 +1,5 @@
+isEmpty[Int](Nil[Int](unit))
+;;;
+true
+;;;
+Boolean

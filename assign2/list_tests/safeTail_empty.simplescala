@@ -1,0 +1,3 @@
+safeTail(Nil(unit))
+;;;
+None(unit)

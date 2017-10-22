@@ -1,0 +1,32 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(/cs/student/lcc/CS162/assign2/repl.scala, /cs/student/lcc/CS162/assign2/interpreter.scala, /cs/student/lcc/CS162/assign2/tester.scala, /cs/student/lcc/CS162/assign2/syntax.scala, /cs/student/lcc/CS162/assign2/test_value.scala, /cs/student/lcc/CS162/assign2/parser.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/cs/student/lcc/CS162/assign2/repl.scala, /cs/student/lcc/CS162/assign2/interpreter.scala, /cs/student/lcc/CS162/assign2/tester.scala, /cs/student/lcc/CS162/assign2/syntax.scala, /cs/student/lcc/CS162/assign2/test_value.scala, /cs/student/lcc/CS162/assign2/parser.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/cs/student/lcc/CS162/assign2/repl.scala, /cs/student/lcc/CS162/assign2/interpreter.scala, /cs/student/lcc/CS162/assign2/tester.scala, /cs/student/lcc/CS162/assign2/syntax.scala, /cs/student/lcc/CS162/assign2/test_value.scala, /cs/student/lcc/CS162/assign2/parser.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 6 sources: invalidated sources (6) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 6 Scala sources to /cs/student/lcc/CS162/assign2/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.4[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.4[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 45bb0d96, interfacing (CompilerInterface) with Scala compiler version 2.10.4[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/classes:/cs/student/lcc/.sbt/boot/scala-2.10.4/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/cs/student/lcc/CS162/assign2/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0mScala compilation took 18.060603393 s[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive public inheritance: Set(/cs/student/lcc/CS162/assign2/repl.scala, /cs/student/lcc/CS162/assign2/interpreter.scala, /cs/student/lcc/CS162/assign2/tester.scala, /cs/student/lcc/CS162/assign2/syntax.scala, /cs/student/lcc/CS162/assign2/test_value.scala, /cs/student/lcc/CS162/assign2/parser.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by direct dependency: Set(/cs/student/lcc/CS162/assign2/repl.scala, /cs/student/lcc/CS162/assign2/interpreter.scala, /cs/student/lcc/CS162/assign2/tester.scala, /cs/student/lcc/CS162/assign2/test_value.scala, /cs/student/lcc/CS162/assign2/parser.scala)[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m

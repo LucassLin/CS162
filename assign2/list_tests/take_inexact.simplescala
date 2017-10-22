@@ -1,0 +1,5 @@
+{ val l2 = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  take(l2)(2)
+}
+;;;
+Cons(("moo", Cons(("cow", Nil(unit)))))

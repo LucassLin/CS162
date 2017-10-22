@@ -1,0 +1,5 @@
+map(Nil(unit))((x: Int) => x + 1)
+;;;
+Nil(unit)
+;;;
+IntList

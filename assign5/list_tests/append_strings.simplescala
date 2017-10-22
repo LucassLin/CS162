@@ -1,0 +1,7 @@
+{ val l2 = Cons[String](("moo", Cons[String](("cow", Cons[String](("bull", Nil[String](unit)))))))
+  append[String](l2)(l2)
+}
+;;;
+Cons(("moo", Cons(("cow", Cons(("bull", Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))))))))
+;;;
+List[String]

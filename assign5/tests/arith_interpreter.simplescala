@@ -1,0 +1,34 @@
+algebraic Binop[] = Plus(Unit) | Minus(Unit) | Times(Unit) | Div(Unit)
+algebraic Ast[] = Integer(Int) | Binop((Ast[], Binop[], Ast[]))
+
+def eval[](ast: Ast[]): Int =
+  ast match {
+    case Integer(x) => x
+    case Binop(triple) =>
+      triple match {
+        case (e1, op, e2) => {
+          val left = eval[](e1)
+          val right = eval[](e2)
+          op match {
+            case Plus(x) => left + right
+            case Minus(x) => left - right
+            case Times(x) => left * right
+            case Div(x) => left / right
+          }
+        }
+      }
+  }
+
+(eval[](Integer[](7)),
+ eval[](Binop[]((Integer[](2), Plus[](unit), Integer[](3)))),
+ eval[](Binop[]((Binop[]((Integer[](2), Plus[](unit), Integer[](3))), Minus[](unit), Integer[](2)))),
+ eval[](Binop[]((Integer[](2), Times[](unit), Integer[](3)))),
+ eval[](Binop[]((Integer[](4), Div[](unit), Integer[](2)))))
+;;;
+(7,
+ 5,
+ 3,
+ 6,
+ 2)
+;;;
+(Int, Int, Int, Int, Int)

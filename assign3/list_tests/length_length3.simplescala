@@ -1,0 +1,7 @@
+{ val l1 = Cons((0, Cons((1, Cons((2, Nil(unit)))))))
+  length(l1)
+}
+;;;
+3
+;;;
+Int

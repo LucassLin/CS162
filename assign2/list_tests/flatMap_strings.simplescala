@@ -1,0 +1,5 @@
+{ val list = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  flatMap(list)(s => Cons(("", Cons((s, Nil(unit))))))
+}
+;;;
+Cons(("", Cons(("moo", Cons(("", Cons(("cow", Cons(("", Cons(("bull", Nil(unit)))))))))))))

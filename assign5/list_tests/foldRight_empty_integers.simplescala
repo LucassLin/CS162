@@ -1,0 +1,7 @@
+{ val sum = (x: Int) => (y: Int) => x + y
+ foldRight[Int, Int](Nil[Int](unit))(5)(sum)
+}
+;;;
+5
+;;;
+Int

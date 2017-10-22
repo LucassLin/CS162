@@ -1,0 +1,5 @@
+safeTail[String](Cons[String](("moo", Nil[String](unit))))
+;;;
+Some(Nil(unit))
+;;;
+Option[List[String]]

@@ -1,0 +1,6 @@
+algebraic Option[A] = Some(A) | None(Unit)
+Some[Int](1)
+;;;
+Some(1)
+;;;
+Option[Int]

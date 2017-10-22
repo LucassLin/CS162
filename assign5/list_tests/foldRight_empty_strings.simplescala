@@ -1,0 +1,7 @@
+{ val concat = (x: String) => (y: String) => x + y
+  foldRight[String, String](Nil[String](unit))("foo")(concat)
+}
+;;;
+"foo"
+;;;
+String

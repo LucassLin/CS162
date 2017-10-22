@@ -1,0 +1,3 @@
+foldLeft(Nil(unit))(5)(x => y => x + y)
+;;;
+5

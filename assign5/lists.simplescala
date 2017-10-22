@@ -1,0 +1,154 @@
+// You must implement the following defs in SimpleScala,
+// which are stubbed out at the end of this file:
+// - safeTail
+// - isEmpty
+// - map
+// - foldLeft
+// - append
+// - flatMap
+// - filter
+// - foldRight
+// - take
+// - drop
+//
+// While the type signatures and initial parameters have all been
+// accounted for, the bodies merely return `unit`.  Replace the
+// `unit` with code which will make it work.  Note that this
+// time around, you'll need to ensure your code is well-typed
+// according to the typing rules in handout 3.
+//
+// As with assignment 2, we use currying in cases where functions
+// take multiple parameters, and use tuples in cases where constructors
+// take multiple parameters.  See the large block comment at the
+// start of assignment 2's `lists.simplescala` file for more
+// information.
+//
+// We have provided the type signatures below for convenience.
+// Unlike with assignment 3, these are fully generic (i.e., they
+// use type variables, as opposed to being for one fixed type)
+
+
+algebraic Option[A] = Some(A) | None(Unit)
+algebraic List[A] = Cons((A, List[A])) | Nil(Unit)
+
+
+// You may add your own user-defined types, though you shouldn't
+// need to.
+//
+// While you can (and should) use your previous definitions from
+// assignment 5, chances are good that you will need to edit them
+// quite a bit before they will work.  In particular, the following
+// sorts of edits will need to be performed:
+//
+// - Introducing type variables where appropriate.
+// - Using List[...] instead of IntList, where `...` is whatever
+//   the appropriate type is
+// - Using `call[...](...)` instead of `call(...)` to call a named
+//   function named `call`.  Even if the named function does not
+//   take type parameters, you'll still need to use empty square
+//   brackets (`[]`).
+// - Using `Cons[...](...)` instead of `Cons(...)` to construct
+//   a constructor tagged with the name `Cons`.  Even if the
+//   algebraic datatype underlying `Cons` does not take any
+//   type parameters, you'll still need to use empty square
+//   brackets (`[]`).
+
+
+def safeHead[A](list: List[A]): Option[A] =
+  list match {
+    case Cons(cell) => Some[A](cell._1)
+    case Nil(x) => None[A](unit)
+  }
+
+def length[A](list: List[A]): Int =
+  list match {
+    case Cons(cell) =>
+      1 + length[A](cell._2)
+    case Nil(x) => 0
+  }
+
+
+// -------BEGIN CODE YOU MUST IMPLEMENT-------
+
+// Hint: this looks very similar to safeHead, defined above
+def safeTail[A](list: List[A]): Option[List[A]] = 
+  list match{
+    case Cons(cell) => Some[List[A]](cell._2)
+    case Nil(x) => None[List[A]](unit)
+  }
+
+def isEmpty[A](list: List[A]): Boolean = 
+  list match{
+    case Cons(cell) => false
+    case Nil(x) => true
+  }
+
+def map[A](list: List[A]): (A => A) => List[A] =
+  (fn: A => A) =>
+    list match{
+    case Cons(cell) => Cons[A]((fn(cell._1), map[A](cell._2)(fn)))
+    case Nil(x) => Nil[A](unit)
+  }
+
+def foldLeft[A, B](list: List[A]): B => (B => A => B) => B =
+  (accum: B) =>
+  (fn: B => A => B) => 
+    list match{
+    case Cons(cell) => foldLeft[A, B](cell._2)(fn(accum)(cell._1))(fn)
+    case Nil(x) => accum
+  }
+
+def append[A](l1: List[A]): List[A] => List[A] =
+  (l2: List[A]) => 
+    l1 match {
+    case Cons(cell) =>
+      Cons[A]((cell._1, append[A](cell._2)(l2)))
+    case Nil(x) => l2
+  }
+
+def flatMap[A, B](list: List[A]): (A => List[B]) => List[B] =
+  (fn: A => List[B]) =>
+    list match{
+    case Cons(cell) => append[B](fn(cell._1))(flatMap[A, B](cell._2)(fn))
+    case Nil(x) => Nil[B](x)
+  }
+
+def filter[A](list: List[A]): (A => Boolean) => List[A] =
+  (fn: A => Boolean) =>
+    list match{
+    case Cons(cell) =>
+    if(fn(cell._1)) Cons[A]((cell._1, filter[A](cell._2)(fn))) 
+      else filter[A](cell._2)(fn)
+    case Nil(x) => Nil[A](unit)
+  }
+
+def foldRight[A, B](list: List[A]): B => (A => B => B) => B =
+  (accum: B) =>
+  (fn: A => B => B) =>
+    list match{
+    case Cons(cell) => fn(cell._1)(foldRight[A, B](cell._2)(accum)(fn))
+    case Nil(x) => accum
+  }
+
+def take[A](list: List[A]): Int => List[A] =
+  (i: Int) => 
+  if (i<=0) Nil[A](unit)
+  else
+  list match{
+    case Cons(cell) => Cons[A]((cell._1, take[A](cell._2)(i-1)))
+    case Nil(x) => Nil[A](unit)
+  }
+
+def drop[A](list: List[A]): Int => List[A] =
+  (i: Int) => 
+  if(i<=0) list
+  else
+  list match{
+    case Cons(cell) => drop[A](cell._2)(i-1)
+    case Nil(x) => Nil[A](x)
+  }
+
+
+
+
+

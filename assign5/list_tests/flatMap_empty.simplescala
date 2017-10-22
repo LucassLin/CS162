@@ -1,0 +1,7 @@
+{ val flatAdd = (i: Int) => Cons[Int]((i - 1, Cons[Int]((i, Cons[Int]((i + 1, Nil[Int](unit)))))))
+  flatMap[Int, Int](Nil[Int](unit))(flatAdd)
+}
+;;;
+Nil(unit)
+;;;
+List[Int]

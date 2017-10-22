@@ -1,0 +1,5 @@
+safeTail[Int](Nil[Int](unit))
+;;;
+None(unit)
+;;;
+Option[List[Int]]

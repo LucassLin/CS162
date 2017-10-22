@@ -1,0 +1,5 @@
+isEmpty(Nil(unit))
+;;;
+true
+;;;
+Boolean

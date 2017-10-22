@@ -1,0 +1,5 @@
+{ val pred = i => 5 < i
+  filter(Nil(unit))(pred)
+}
+;;;
+Nil(unit)

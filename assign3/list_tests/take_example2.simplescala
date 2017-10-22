@@ -1,0 +1,7 @@
+{ val e = Cons((2, Cons((3, Nil(unit)))))
+  take(e)(3)
+}
+;;;
+Cons((2, Cons((3, Nil(unit)))))
+;;;
+IntList

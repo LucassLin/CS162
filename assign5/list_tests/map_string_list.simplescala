@@ -1,0 +1,7 @@
+{ val list = Cons[String](("moo", Cons[String](("cow", Cons[String](("bull", Nil[String](unit)))))))
+  map[String](list)((s: String) => s + "bar")
+}
+;;;
+Cons(("moobar", Cons(("cowbar", Cons(("bullbar", Nil(unit)))))))
+;;;
+List[String]

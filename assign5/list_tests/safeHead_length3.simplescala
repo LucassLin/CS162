@@ -1,0 +1,7 @@
+{ val l1 = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))))
+  safeHead[Int](l1)
+}
+;;;
+Some(1)
+;;;
+Option[Int]

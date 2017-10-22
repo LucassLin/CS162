@@ -1,0 +1,5 @@
+append[Int](Nil[Int](unit))(Nil[Int](unit))
+;;;
+Nil(unit)
+;;;
+List[Int]

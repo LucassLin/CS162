@@ -1,0 +1,3 @@
+isEmpty(Cons(("moo", Nil(unit))))
+;;;
+false

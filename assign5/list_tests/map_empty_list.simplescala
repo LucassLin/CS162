@@ -1,0 +1,5 @@
+map[Int](Nil[Int](unit))((x: Int) => x + 1)
+;;;
+Nil(unit)
+;;;
+List[Int]

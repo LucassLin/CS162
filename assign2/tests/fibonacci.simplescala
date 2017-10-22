@@ -1,0 +1,13 @@
+def intEquals(x) = y => x <= y && y <= x
+
+def fib(n) =
+  if (intEquals(n)(0))
+    0
+  else if (intEquals(n)(1))
+    1
+  else
+    fib(n - 1) + fib(n - 2)
+
+fib(8)
+;;;
+21

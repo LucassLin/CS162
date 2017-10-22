@@ -1,0 +1,5 @@
+{ val concat = x => y => x + y
+  foldRight(Nil(unit))("foo")(concat)
+}
+;;;
+"foo"

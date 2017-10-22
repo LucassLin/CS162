@@ -1,0 +1,7 @@
+{ val list = Cons[String](("moo", Cons[String](("cow", Cons[String](("bull", Nil[String](unit)))))))
+  foldLeft[String, String](list)("")((x: String) => (y: String) => x + y)
+}
+;;;
+"moocowbull"
+;;;
+String

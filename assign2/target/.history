@@ -1,0 +1,3 @@
+compile
+scalac *.scala
+scala simplescala.interpreter.SingleTester tests

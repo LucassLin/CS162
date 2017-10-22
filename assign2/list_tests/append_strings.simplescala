@@ -1,0 +1,5 @@
+{ val l2 = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  append(l2)(l2)
+}
+;;;
+Cons(("moo", Cons(("cow", Cons(("bull", Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))))))))

@@ -1,0 +1,7 @@
+{ val list = Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+  foldLeft(list)(0)((x: Int) => (y: Int) => x - y)
+}
+;;;
+-6
+;;;
+Int

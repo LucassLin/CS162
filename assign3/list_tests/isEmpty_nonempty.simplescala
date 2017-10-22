@@ -1,0 +1,5 @@
+isEmpty(Cons((1, Nil(unit))))
+;;;
+false
+;;;
+Boolean

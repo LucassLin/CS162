@@ -1,0 +1,6 @@
+{ val sum = x => y => x + y
+  val l1 = Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+  foldRight(l1)(0)(sum)
+}
+;;;
+6

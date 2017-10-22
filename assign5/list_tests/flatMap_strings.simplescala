@@ -1,0 +1,7 @@
+{ val list = Cons[String](("moo", Cons[String](("cow", Cons[String](("bull", Nil[String](unit)))))))
+  flatMap[String, String](list)((s: String) => Cons[String](("", Cons[String]((s, Nil[String](unit))))))
+}
+;;;
+Cons(("", Cons(("moo", Cons(("", Cons(("cow", Cons(("", Cons(("bull", Nil(unit)))))))))))))
+;;;
+List[String]

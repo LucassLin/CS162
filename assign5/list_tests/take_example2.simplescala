@@ -1,0 +1,7 @@
+{ val e = Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))
+  take[Int](e)(3)
+}
+;;;
+Cons((2, Cons((3, Nil(unit)))))
+;;;
+List[Int]

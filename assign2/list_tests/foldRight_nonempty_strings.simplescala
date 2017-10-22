@@ -1,0 +1,6 @@
+{ val concat = x => y => x + y
+  val l2 = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  foldRight(l2)("")(concat)
+}
+;;;
+"moocowbull"

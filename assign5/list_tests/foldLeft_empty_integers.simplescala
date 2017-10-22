@@ -1,0 +1,5 @@
+foldLeft[Int, Int](Nil[Int](unit))(5)((x: Int) => (y: Int) => x + y)
+;;;
+5
+;;;
+Int

@@ -1,0 +1,7 @@
+{ val list = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))))
+  foldLeft[Int, Int](list)(0)((x: Int) => (y: Int) => x + y)
+}
+;;;
+6
+;;;
+Int

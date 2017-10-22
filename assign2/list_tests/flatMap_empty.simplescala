@@ -1,0 +1,5 @@
+{ val flatAdd = i => Cons((i - 1, Cons((i, Cons((i + 1, Nil(unit)))))))
+  flatMap(Nil(unit))(flatAdd)
+}
+;;;
+Nil(unit)

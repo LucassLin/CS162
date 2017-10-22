@@ -1,0 +1,8 @@
+{ val pred = (i: Int) => 5 < i
+  val nums = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Cons[Int]((4, Cons[Int]((5, Cons[Int]((6, Cons[Int]((7, Cons[Int]((8, Cons[Int]((9, Cons[Int]((10, Nil[Int](unit)))))))))))))))))))))
+  filter[Int](nums)(pred)
+}
+;;;
+Cons((6, Cons((7, Cons((8, Cons((9, Cons((10, Nil(unit)))))))))))
+;;;
+List[Int]

@@ -1,0 +1,5 @@
+{ val l1 = Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+  safeTail(l1)
+}
+;;;
+Some(Cons((2, Cons((3, Nil(unit))))))

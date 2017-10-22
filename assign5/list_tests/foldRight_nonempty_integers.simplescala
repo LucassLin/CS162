@@ -1,0 +1,8 @@
+{ val sum = (x: Int) => (y: Int) => x + y
+  val l1 = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))))
+  foldRight[Int, Int](l1)(0)(sum)
+}
+;;;
+6
+;;;
+Int

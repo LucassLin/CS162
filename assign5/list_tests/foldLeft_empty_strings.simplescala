@@ -1,0 +1,5 @@
+foldLeft[String, String](Nil[String](unit))("foo")((x: String) => (y: String) => x + y)
+;;;
+"foo"
+;;;
+String

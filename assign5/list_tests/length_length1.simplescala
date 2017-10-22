@@ -1,0 +1,5 @@
+length[String](Cons[String](("moo", Nil[String](unit))))
+;;;
+1
+;;;
+Int

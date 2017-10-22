@@ -1,0 +1,5 @@
+{ val list = Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+  map(list)(i => i + 1)
+}
+;;;
+Cons((2, Cons((3, Cons((4, Nil(unit)))))))

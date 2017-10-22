@@ -1,0 +1,274 @@
+// You must implement the following defs in SimpleScala,
+// which are stubbed out at the end of this file:
+// - safeTail
+// - isEmpty
+// - map
+// - foldLeft
+// - append
+// - flatMap
+// - filter
+// - foldRight
+// - take
+// - drop
+//
+// For each of the stubs, the function parameters have
+// already been accounted for, but the bodies merely return
+// `unit`.  You'll need to replace `unit` with the proper
+// body for each def.
+//
+// Note that you had to implement each one of these in Scala
+// for Assignment 1.  These *should* look very similar in
+// SimpleScala.  It is recommended to look at your
+// implementation from Assignment 1 and effectively
+// port it to SimpleScala.
+//
+// The tests from Assignment 1 have been ported to SimpleScala
+// for you already.  These tests are provided in the
+// `list_tests` directory, with one test per file.
+// Each one of these tests features an expression which is
+// executed underneath the `def`s in this file, along with
+// the value the expression should evaluate to, separated
+// by `;;;`.  If you're having trouble understanding how to
+// call any of these defs, it is recommended that you look
+// at these tests, which frequently call into the
+// `def`s in this file.
+
+// Particularly relevant to this portion of the assignment,
+// there are some key differences between Scala and SimpleScala:
+//
+// 1.) SimpleScala does not allow functions to take multiple
+//     arguments. As such, we use Currying
+//     (https://en.wikipedia.org/wiki/Currying) for functions.
+//     To illustrate, consider the following Scala function def:
+//
+//     def foo(x: Int, y: Int, z: Int): Int = ...
+//
+//     In Scala, we'd call this like so:
+//
+//     foo(1, 2, 3)
+//
+//     In SimpleScala, we'd define this function instead as:
+//
+//     def foo(x) = y => z => ...
+//
+//     That is, we define `foo` to be a function that takes
+//     the first integer, and returns a function that takes
+//     the second integer, which returns a function that takes
+//     the third integer.  We can then call this like so:
+//
+//     foo(1)(2)(3)
+//
+//     ...which is equivalent to writing:
+//
+//     ((foo(1))(2))(3)
+//
+//     ...that is, foo(1) returns a function which is immediately
+//     called (with the `(2)` part), which similarly returns a function
+//     which is immediately called (with the `(3)` part)
+//
+//
+// 2.) SimpleScala does not allow tagged values to take multiple
+//     arguments.  As such, we use tuples for this purpose.
+//     To illustrate, consider the following Scala code, where
+//     `FooBar` is assumed to be a case class taking three
+//     `Int` parameters:
+//
+//     val x = FooBar(1, 2, 3)
+//
+//     We can later pattern match on this constructor like so:
+//
+//     x match {
+//       case FooBar(x, y, z) => ...
+//     }
+//
+//     In SimpleScala, we'd instead have to do the following to
+//     make the tagged value:
+//
+//     val x = FooBar((1, 2, 3))
+//
+//     That is, the tagged value now takes a tuple holding the three
+//     values we want, as opposed to taking three values directly.
+//     This overcomes the problem of tagged values only taking one
+//     value, as we can effectively "cheat" by packaging multiple
+//     values into a single value by using a tuple.
+//
+//     From here, we can pattern match on the tagged value, though
+//     it is a little less convenient because SimpleScala does not
+//     allow nested patterns.  With this in mind, our pattern match
+//     looks like this:
+//
+//     x match {
+//       case FooBar(tuple) =>
+//         tuple match {
+//           case (x, y, z) => ...
+//         }
+//     }
+//
+//     Because SimpleScala doesn't allow nested patterns, we have to
+//     first extract the tuple as one component from `FooBar`, and then
+//     we have to extract the values out of the tuple in a separate
+//     pattern match operation.
+//
+//
+//  3.) SimpleScala always requires functions and constructors take one
+//      parameter.  This is problematic whenever no parameter makes sense.
+//      For example, consider the following Scala code:
+//
+//      def returns7(): Int = 7
+//      val emptyList = Nil
+//
+//      The `returns7` def simply returns `7` without taking any parameters,
+//      and the empty list (`Nil`) does not need any parameters to be
+//      instantiated.  In contrast, in SimpleScala, we'd have to do pass
+//      along parameters in both cases.  Primarily for this reason, `unit`
+//      often gets used as a dummy value.  To illustrate, consider the
+//      following SimpleScala code:
+//
+//      def returns7(junk) = 7
+//      { val emptyList = Nil(unit)
+//        val doCall = returns7(unit)
+//        ...
+//      }
+//
+//  4.) With the above points in mind, lists look a bit different in SimpleScala
+//      than they do in Scala.  To see this difference, the following two
+//      lists are equivalent (space added for the Scala one to see how it lines
+//      up with the SimpleScala equivalent):
+//
+//      Scala:       Cons( 1, Cons( 2, Cons( 3, Nil)))
+//      SimpleScala: Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+//
+//      Because tagged values in SimpleScala always take exactly one parameter, this
+//      means we have to use 2-tuples (pairs) in the `Cons` case in order to pass in
+//      both the head and the tail of the list.  This is why there is an "extra" level
+//      of parentheses for `Cons` in SimpleScala: each `Cons` holds one element, a tuple.
+//      Similarly, `Nil` is effected by the one-parameter requirement, as in
+//      SimpleScala, we must pass the dummy value `unit` to `Nil` in order to make a `Nil`.
+
+def head(list) =
+  list match {
+    case Cons(cell) => cell._1
+    case Nil(x) => "moo" * 1 // intentionally get stuck
+  }
+
+def tail(list) =
+  list match {
+    case Cons(cell) => cell._2
+    case Nil(x) => "moo" * 1 // intentionally get stuck
+  }
+
+def init(list) =
+  list match {
+    case Cons(cell) =>
+      cell match {
+        case (head, tail) =>
+          tail match {
+            case Cons(otherCell) => Cons((head, init(tail)))
+            case Nil(x) => Nil(x)
+          }
+      }
+    case Nil(x) => "moo" * 1 // intentionally get stuck
+  }
+
+def last(list) =
+  list match {
+    case Cons(cell) =>
+      cell match {
+        case (head, tail) =>
+          tail match {
+            case Cons(cell) => last(tail)
+            case Nil(x) => head
+          }
+      }
+    case Nil(x) => "moo" * 1 // intentionally get stuck
+  }
+
+def safeHead(list) =
+  list match {
+    case Cons(cell) => Some(cell._1)
+    case Nil(x) => None(unit)
+  }
+
+def length(list) =
+  list match {
+    case Cons(cell) =>
+      1 + length(cell._2)
+    case Nil(x) => 0
+  }
+
+
+// -------BEGIN CODE YOU MUST IMPLEMENT-------
+
+// Hint: this looks very similar to safeHead, defined above
+def safeTail(list) = 
+  list match{
+    case Cons(cell) => Some(cell._2)
+    case Nil(x) => None(unit)
+  }
+
+
+def isEmpty(list) = 
+  list match{
+    case Cons(cell) => false
+    case Nil(x) => true
+  }
+
+
+def map(list) = fn => 
+  list match{
+    case Cons(cell) => Cons((fn(cell._1), map(cell._2)(fn)))
+    case Nil(x) => Nil(unit)
+  }
+
+def foldLeft(list) = accum => fn => 
+  list match{
+    case Cons(cell) => foldLeft(cell._2)(fn(accum)(cell._1))(fn)
+    case Nil(x) => accum
+  }
+
+def append(l1) = l2 =>
+  l1 match {
+    case Cons(cell) =>
+      Cons((cell._1, append(cell._2)(l2)))
+    case Nil(x) => l2
+  }
+
+def flatMap(list) = fn => 
+  list match{
+    case Cons(cell) => append(fn(cell._1))(flatMap(cell._2)(fn))
+    case Nil(x) => Nil(x)
+  }
+
+
+def filter(list) = fn =>
+  list match{
+    case Cons(cell) =>
+	  if(fn(head(list))) Cons((head(list), filter(tail(list))(fn))) 
+  	  else filter(tail(list))(fn)
+    case Nil(x) => Nil(unit)
+  }
+
+
+
+def foldRight(list) = accum => fn =>
+  list match{
+    case Cons(cell) => foldRight(init(list))(fn(last(list))(accum))(fn)
+    case Nil(x) => accum
+  }
+
+def take(list) = i =>
+  if (i<=0) Nil(unit)
+  else
+  list match{
+    case Cons(cell) => Cons((cell._1, take(cell._2)(i-1)))
+    case Nil(x) => Nil(x)
+  }
+
+def drop(list) = i => 
+  if(i<=0) list
+  else
+  list match{
+    case Cons(cell) => drop(cell._2)(i-1)
+    case Nil(x) => Nil(x)
+  }
+

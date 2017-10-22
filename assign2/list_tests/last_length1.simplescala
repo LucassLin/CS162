@@ -1,0 +1,3 @@
+last(Cons(("moo", Nil(unit))))
+;;;
+"moo"

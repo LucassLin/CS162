@@ -1,0 +1,8 @@
+{ val concat = (x: String) => (y: String) => x + y
+  val l2 = Cons[String](("moo", Cons[String](("cow", Cons[String](("bull", Nil[String](unit)))))))
+  foldRight[String, String](l2)("")(concat)
+}
+;;;
+"moocowbull"
+;;;
+String

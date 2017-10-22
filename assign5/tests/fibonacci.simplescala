@@ -1,0 +1,15 @@
+def intEquals[](x: Int): Int => Boolean = (y: Int) => x <= y && y <= x
+
+def fib[](n: Int): Int =
+  if (intEquals[](n)(0))
+    0
+  else if (intEquals[](n)(1))
+    1
+  else
+    fib[](n - 1) + fib[](n - 2)
+
+fib[](8)
+;;;
+21
+;;;
+Int

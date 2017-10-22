@@ -1,0 +1,13 @@
+def intEquals[](x: Int): Int => Boolean = (y: Int) => x <= y && y <= x
+
+def factorial[](n: Int): Int =
+  if (intEquals[](n)(0))
+    1
+  else
+    factorial[](n - 1) * n
+
+factorial[](4)
+;;;
+24
+;;;
+Int

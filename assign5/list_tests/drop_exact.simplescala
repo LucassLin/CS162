@@ -1,0 +1,7 @@
+{ val l1 = Cons[Int]((1, Cons[Int]((2, Cons[Int]((3, Nil[Int](unit)))))))
+  drop[Int](l1)(3)
+}
+;;;
+Nil(unit)
+;;;
+List[Int]

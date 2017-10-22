@@ -1,0 +1,5 @@
+take[Int](Nil[Int](unit))(7)
+;;;
+Nil(unit)
+;;;
+List[Int]

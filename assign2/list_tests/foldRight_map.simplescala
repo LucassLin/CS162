@@ -1,0 +1,10 @@
+{ val intEqual = x => y => x <= y && y <= x
+  val addMap = map => key => value => x => if (intEqual(key)(x)) Some(value) else map(key)
+  val addMapPair = map => pair => addMap(map)(pair._1)(pair._2)
+  val emptyMap = x => None(unit)
+  val pairList = Cons(((1, 2), Cons(((1, 3), Nil(unit)))))
+  val wholeMap = foldRight(pairList)(emptyMap)(cur => res => addMapPair(res)(cur))
+  wholeMap(1)
+}
+;;;
+Some(2)

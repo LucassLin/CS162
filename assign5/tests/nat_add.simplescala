@@ -1,0 +1,16 @@
+algebraic Nat[] = Succ(Nat[]) | Zero(Unit)
+
+def add[](n1: Nat[]): Nat[] => Nat[] =
+  (n2: Nat[]) =>
+  n1 match {
+    case Succ(n1MinusOne) =>
+      Succ[](add[](n1MinusOne)(n2))
+    case Zero(x) => n2
+  }
+
+// 2 + 3 = 5
+add[](Succ[](Succ[](Zero[](unit))))(Succ[](Succ[](Succ[](Zero[](unit)))))
+;;;
+Succ(Succ(Succ(Succ(Succ(Zero(unit))))))
+;;;
+Nat[]

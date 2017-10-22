@@ -1,0 +1,5 @@
+safeHead(Cons((1, Nil(unit))))
+;;;
+Some(1)
+;;;
+IntOption

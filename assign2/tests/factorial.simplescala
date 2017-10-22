@@ -1,0 +1,11 @@
+def intEquals(x) = y => x <= y && y <= x
+
+def factorial(n) =
+  if (intEquals(n)(0))
+    1
+  else
+    factorial(n - 1) * n
+
+factorial(4)
+;;;
+24

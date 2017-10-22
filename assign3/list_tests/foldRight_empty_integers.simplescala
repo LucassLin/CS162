@@ -1,0 +1,7 @@
+{ val minus = (x: Int) => (y: Int) => x - y
+ foldRight(Nil(unit))(5)(minus)
+}
+;;;
+5
+;;;
+Int

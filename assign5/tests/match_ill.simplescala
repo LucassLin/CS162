@@ -1,0 +1,8 @@
+algebraic Option[A] = None(Unit)
+
+Some[A](1) match {
+  case Some(x) => x
+  case None(x) => 2
+}
+;;;
+ILLTYPED

@@ -1,0 +1,141 @@
+// You must implement the following defs in SimpleScala,
+// which are stubbed out at the end of this file:
+// - isEmpty
+// - map
+// - foldLeft
+// - append
+// - flatMap
+// - filter
+// - foldRight
+// - take
+// - drop
+//
+// While the type signatures and initial parameters have all been
+// accounted for, the bodies merely return `unit`.  Replace the
+// `unit` with code which will make it work.  Note that this
+// time around, you'll need to ensure your code is well-typed
+// according to the typing rules in handout 3.
+//
+// As with assignment 2, we use currying in cases where functions
+// take multiple parameters, and use tuples in cases where constructors
+// take multiple parameters.  See the large block comment at the
+// start of assignment 2's `lists.simplescala` file for more
+// information.
+//
+// We have provided the type signatures below for convenience.
+// These represent the `Option` type specialized for `Int`, and
+// lists specialized for `Int`, respectively.
+
+
+algebraic IntOption = Some(Int) | None(Unit)
+algebraic IntList = Cons((Int, IntList)) | Nil(Unit)
+
+
+
+// You may add your own user-defined types, though you shouldn't
+// need to.
+//
+// The definitions above force our lists to contain
+// `Int`, as opposed to some arbitrary type variable (as they
+// do in Scala).  We will address this problem in assignment 5.
+// For now, all your list operations must work only with `Int`.
+//
+// For the most part, you should be able to copy over your
+// untyped definitions from assignment 2 and add some types where
+// appropriate.  However, this may not work if you used `flatMap`,
+// `foldLeft`, or `foldRight` to implement any other operations.
+// Because we have constrained these operations to only work
+// on lists of integers, this may have broken things in your
+// implementations.
+
+
+def safeHead(list: IntList): IntOption =
+  list match {
+    case Cons(cell) => Some(cell._1)
+    case Nil(x) => None(unit)
+  }
+
+def length(list: IntList): Int =
+  list match {
+    case Cons(cell) =>
+      1 + length(cell._2)
+    case Nil(x) => 0
+  }
+
+
+// -------BEGIN CODE YOU MUST IMPLEMENT-------
+
+def isEmpty(list: IntList): Boolean = 
+  list match{
+    case Cons(cell) => false
+    case Nil(x) => true
+  }
+
+def map(list: IntList): (Int => Int) => IntList =
+  (fn: Int => Int) => 
+  list match{
+    case Cons(cell) => Cons((fn(cell._1), map(cell._2)(fn)))
+    case Nil(x) => Nil(unit)
+  }
+
+
+def append(l1: IntList): IntList => IntList =
+  (l2: IntList) => 
+  l1 match {
+    case Cons(cell) =>
+      Cons((cell._1, append(cell._2)(l2)))
+    case Nil(x) => l2
+  }
+
+def flatMap(list: IntList): (Int => IntList) => IntList =
+  (fn: Int => IntList) => 
+  list match{
+    case Cons(cell) => append(fn(cell._1))(flatMap(cell._2)(fn))
+    case Nil(x) => Nil(x)
+  }
+
+def foldLeft(list: IntList): Int => (Int => Int => Int) => Int =
+  (accum: Int) =>
+  (fn: Int => Int => Int) => 
+    list match{
+    case Cons(cell) => foldLeft(cell._2)(fn(accum)(cell._1))(fn)
+    case Nil(x) => accum
+  }
+
+def foldRight(list: IntList): Int => (Int => Int => Int) => Int =
+  (accum: Int) =>
+  (fn: Int => Int => Int) =>
+  list match{
+    case Cons(cell) => fn(cell._1)(foldRight(cell._2)(accum)(fn))
+    case Nil(x) => accum
+  }
+
+def filter(list: IntList): (Int => Boolean) => IntList =
+  (fn: Int => Boolean) => 
+  list match{
+    case Cons(cell) =>
+    if(fn(cell._1)) Cons((cell._1, filter(cell._2)(fn))) 
+      else filter(cell._2)(fn)
+    case Nil(x) => Nil(unit)
+  }
+
+
+def take(list: IntList): Int => IntList =
+  (i: Int) => 
+  if (i<=0) Nil(unit)
+  else
+  list match{
+    case Cons(cell) => Cons((cell._1, take(cell._2)(i-1)))
+    case Nil(x) => Nil(x)
+  }
+
+def drop(list: IntList): Int => IntList =
+  (i: Int) => 
+  if(i<=0) list
+  else
+  list match{
+    case Cons(cell) => drop(cell._2)(i-1)
+    case Nil(x) => Nil(x)
+  }
+
+

@@ -1,0 +1,6 @@
+{ val l1 = Cons((1, Cons((2, Cons((3, Nil(unit)))))))
+  val l2 = Cons((4, Cons((5, Cons((6, Nil(unit)))))))
+  append(l1)(l2)
+}
+;;;
+Cons((1, Cons((2, Cons((3, Cons((4, Cons((5, Cons((6, Nil(unit)))))))))))))

@@ -1,0 +1,5 @@
+{ val list = Cons(("moo", Cons(("cow", Cons(("bull", Nil(unit)))))))
+  foldLeft(list)("")(x => y => x + y)
+}
+;;;
+"moocowbull"

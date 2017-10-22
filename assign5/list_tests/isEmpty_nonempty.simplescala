@@ -1,0 +1,5 @@
+isEmpty[String](Cons[String](("moo", Nil[String](unit))))
+;;;
+false
+;;;
+Boolean
